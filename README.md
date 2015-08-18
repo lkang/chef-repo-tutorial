@@ -1,3 +1,7 @@
+Tutorial Code
+=============
+This code is reworked from tutorial http://gettingstartedwithchef.com/first-steps-with-chef.html
+
 Deprecated
 ==========
 
@@ -35,3 +39,5 @@ Next Steps
 ==========
 
 Read the README file in each of the subdirectories for more information about what goes in those directories.
+=======
+# chef-repo-tutorial
