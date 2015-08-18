@@ -10,12 +10,9 @@
 include_recipe "apache2"
 #include_recipe "mysql::client"
 #include_recipe "mysql::server"
-include_recipe "php5-fpm"
 include_recipe "php"
 include_recipe "php::module_mysql"
 include_recipe "apache2::mod_php5"
-#include_recipe "mysql::ruby"
-include_recipe "mysql2_chef_gem"
 
 apache_site "default" do
   enable true
@@ -26,12 +23,14 @@ mysql2_chef_gem 'default' do
 end
 
 mysql_service 'phpapp' do
-  
-  action: [:create, :start]
+  port '3306'
+  version '5.5'
+  initial_root_password node['mysql']['server_root_password']
+  action [:create, :start]
 end
-
+  
 connection_info = {
-  :host => 'localhost',
+  :host => '127.0.0.1',
   :username => 'root',
   :password => node['mysql']['server_root_password']
 }
